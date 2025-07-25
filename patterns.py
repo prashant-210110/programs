@@ -7,3 +7,16 @@ for i in range(n):
         else:
             print(" ",end="")
     print()
+
+
+#printing the left sided right angle triangle
+for i in range(0,n+1):
+    print("*"*i)
+
+
+#printing the inverted left sided right angle triangle
+for i in range(n+1,0,-1):
+    print("*"*i)
+
+
+
