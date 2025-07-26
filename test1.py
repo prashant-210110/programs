@@ -76,3 +76,7 @@ def square(num):
 nums=[1,5,8,6,8,2,1,4]
 result=square(nums)
 print(result)
+
+
+
+#6
