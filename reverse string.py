@@ -48,4 +48,4 @@ b=list(a)
 c=" "
 while b:
   c+=b.pop()
-print("the output by using stack",c)
+print("the output by using stack :",c)
