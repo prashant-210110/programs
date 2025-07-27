@@ -1,3 +1,4 @@
+print("here we are having the answers to the exam conducted in the 26/07/2025")
 #1.even digit sum check-wap that returns yes if the sym of even digits is greatert then sum of digits of odd .otherwise return no
 def check(x):
     x=int(input("enter the number"))
