@@ -144,3 +144,4 @@ def flatten_nested_list(nested_list):
     return flat_list
 nested = [[1, 2], [3, 4], [5], [6, 7]]
 print(flatten_nested_list(nested))
+print("THANK YOU")
