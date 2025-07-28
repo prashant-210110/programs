@@ -1,5 +1,6 @@
 print("here we are having the answers to the exam conducted in the 26/07/2025")
 #1.even digit sum check-wap that returns yes if the sym of even digits is greatert then sum of digits of odd .otherwise return no
+print("even digit sum checker")
 def check(x):
     x=int(input("enter the number"))
     sum_even=0
@@ -21,6 +22,7 @@ print(check(1524))
  * C: 60-74
  * D: 40-59
  * F: Below 40'''
+print("grade categorizer")
 def grade(m):
     m=int(input("enter the marks of the student"))
     if m>=90 and m<=100:
@@ -41,6 +43,7 @@ print(grade(125))
 #3. Leap Year Checker
 '''Write a function that takes a year as input and returns whether it is a leap year or not using if-else conditions.
 '''
+print("leap year checker")
 def leapyear(x):
     x = int(input("enter the year"))
     if x % 4 == 0:
