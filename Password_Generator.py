@@ -42,4 +42,5 @@ def Password_Generator():
     p=p+str(i)
   print(f"here is the password by using {n}numbers {m}symbols {o}alphabets is:\n{p}")
   print("have a nice day")
+  print("thankyou for using this password generator")
 Password_Generator()
