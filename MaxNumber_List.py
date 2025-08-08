@@ -7,5 +7,5 @@ for list in x:
 print(count)
 for j in range(len(list)):
     list[j] = int(list[j])
-
+print(list) 
 print(list)
