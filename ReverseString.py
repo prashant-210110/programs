@@ -49,3 +49,20 @@ c=" "
 while b:
   c+=b.pop()
 print("the output by using stack :",c)
+
+
+
+#reversing a string and check the given string is palindrome or not
+def String():
+  a=input("enter the string")
+  b=a[::-1]
+  print(b)
+  if a==b:
+    print(f"{a} is a palindrome")
+  else:
+    print(f"{a} is not a palindrome")
+String()
+#another simple way
+def string(s):
+  return s==s[::-1]
+string(input())
