@@ -33,3 +33,22 @@ for i in range(x):
         i=i//10
     if sum==a:
         print(sum)
+
+
+
+
+
+def amstrong(x):
+  x=int(input("enter the number"))
+  a=x
+  sum=0
+  b=len(str(x))
+  while x!=0:
+    d=x%10
+    sum=sum+d**b
+    x=x//10
+  if sum==a:
+    print("armstrong")
+  else:
+    print("not armstrong")
+amstrong(153)

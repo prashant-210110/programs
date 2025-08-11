@@ -9,3 +9,20 @@ for i in range(n):
     a,b=b,sum
     print(sum)
 print("thank you")
+
+
+
+
+#Fibonacci Sequence
+def Fibonacci():
+  a=0
+  b=1
+  sum=0
+  n=int(input("enter the range"))
+  print(a)
+  print(b)
+  for i in range(2,n):
+    sum=a+b
+    a,b=b,sum
+    print(sum)
+Fibonacci()

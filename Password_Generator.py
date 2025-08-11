@@ -44,3 +44,30 @@ def Password_Generator():
   print("have a nice day")
   print("thankyou for using this password generator")
 Password_Generator()
+
+
+
+
+
+#password generator
+import random
+numbers=['0','1','2','3','4','5','6','7','8','9']
+symbols=['!','@','#','$','%','^','&','*','(',')']
+num=int(input("enter length"))
+s=[]
+for i in range(0,num):
+  a=str(random.choice(numbers))
+  s+=a
+sym=int(input("enter the length"))
+for i in range(0,sym):
+  b=str(random.choice(symbols))
+  s+=b
+print(s)
+random.shuffle(s)
+print(s)
+random.shuffle(s)
+print(s)
+d=""
+for i in s:
+  d+=i
+print(d)
