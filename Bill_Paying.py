@@ -13,4 +13,3 @@ choice=random.randint(0,b-1)
 print(f"{list[choice]} :will pay the bill")
 print("enjoy")
 
-
