@@ -1,5 +1,5 @@
-Numpy
+numpy
 Pandas
-matplotlib
 Flask
 seaborn
+scikit-learn==1.5.0
