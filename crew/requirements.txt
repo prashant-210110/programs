@@ -1,0 +1,8 @@
+crew==0.9.2
+python3-pika==0.9.14
+shortuuid==1.0.13
+python-dotenv
+langchain-community
+crewai
+google-generativeai
+langchain-google-genai
