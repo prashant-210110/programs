@@ -18,8 +18,8 @@ from langchain_community.chat_models import ChatOllama
     model="llama3",   # or "llama3:8b", "gemma:2b", etc.
     temperature=0.7,
     verbose=True,
-)'''
-
+)
+'''
 
 
 
