@@ -30,6 +30,7 @@ coding_agent = Agent(
     show_tool_calls=True,
     markdown=True,
 )
+
 # agent 3
 debugger = Agent(
     name="Debugger",
@@ -58,33 +59,82 @@ reviewer = Agent(
     markdown=True,
 )
 
+# agent 5
+use_case_agent = Agent(
+    name="UseCaseGenerator",
+    role="Generates guiding use cases (hints) for writing code",
+    model=Ollama(id="llama3.1"),
+    instructions=(
+        "Based on the user's program idea, generate multiple guiding use cases "
+        "that act as hints or requirements for writing the code. "
+        "Each use case should describe a specific scenario, input, or expected behavior "
+        "that the final program must handle. "
+        "Ensure the use cases are clear, beginner-friendly, and directly related to the program idea. "
+        "At the end, present all use cases in one block so they can be easily read and understood."
+    ),
+    markdown=True,
+)
+
+# agent 6
+tester_agent = Agent(
+    name="Tester",
+    role="Validates code against guiding use cases",
+    model=Ollama(id="llama3.1"),
+    instructions=(
+        "Take the given Python code and the guiding use cases (hints). "
+        "For each use case, write a small test snippet that runs the code "
+        "and checks whether the expected behavior is achieved. "
+        "Report results clearly: PASS if the code satisfies the use case, FAIL if it does not. "
+        "Include a short explanation for each result. "
+        "At the end, present a summary table of all use cases with their test results. "
+        "Ensure the final output is beginner-friendly and easy to understand."
+    ),
+    markdown=True,
+)
 
 
+# Get user input for the task
+task = input("Enter the program you want: ")
 
-#program
-task=input("enter the programe you want")
-
-#explining the program
+# task 1: Explain the program
 explanation = explaining_agent.run(task)
 data = explanation.content if hasattr(explanation, "content") else explanation.output_text
+print("\n--- Explanation ---\n")
 print(data)
 
-# generating the python code
+# task 2: Generate Python code
 dev_response = coding_agent.run(task)
 code = dev_response.content
 print("\n--- Developer Output ---\n")
 print(code)
 
-#debugging the generated code
+# task 3: Debug the generated code
 debug_response = debugger.run(f"Fix any issues in this code:\n{code}")
 code = debug_response.content
 print("\n--- Debugger Output ---\n")
 print(code)
 
-#giving review to the debugged code
+# task 4: Review the debugged code
 review_response = reviewer.run(f"Review this code. Reply 'APPROVED' if valid:\n{code}")
 print("\n--- Reviewer Output ---\n")
 print(review_response.content)
 
-#final code
+# task 5: Generate use cases for the code
+use_case_response = use_case_agent.run(f"Generate use cases for this code:\n{code}")
+use_cases = use_case_response.content
+print("\n--- Use Case Generator Output ---\n")
+print(use_cases)
+
+# task 6: Test the code against use cases
+test_response = tester_agent.run(f"Test this code against the following use cases:\n{code}\n\nUse Cases:\n{use_cases}")
+print("\n--- Tester Output ---\n")
+print(test_response.content)
+
+# Final code output
+print("\n--- Final Code ---\n")
 print(code)
+
+
+#all use cases
+print("\n--- Use Case Generator Output ---\n")
+print(use_cases)
