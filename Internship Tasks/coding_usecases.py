@@ -4,7 +4,7 @@ from phi.model.ollama import Ollama
 
 # Agent 1: Coding Agent
 coding_agent = Agent(
-    model=Ollama(id="tinyllama"),
+    model=Ollama(id="llama3.2"),
     instructions=(
         "Generate Python code based on the user's requirement. "
         "Add clear and concise comments to explain each step. "
@@ -12,7 +12,6 @@ coding_agent = Agent(
         "At the end, present the complete code in one block."
     ),
     description="Provides simple Python code solutions",
-    show_tool_calls=True,
     markdown=True,
 )
 

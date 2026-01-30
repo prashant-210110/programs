@@ -1,11 +1,12 @@
-import streamlit as st
-import time
-from phi.agent import Agent
-from phi.model.ollama import Ollama
+import streamlit as st                  # Used to build the interactive web app UI.
+import time                             # track execution time
+from phi.agent import Agent             # define agents with roles and instructions
+from phi.model.ollama import Ollama     # giving different model for different agents for fast execution
+
 
 #agent 1: Coding Agent
 coding_agent = Agent(
-    model=Ollama(id="tinyllama"),
+    model=Ollama(id="llama3.2"),
     instructions="Generate Python code with clear comments, beginner-friendly, final code in one block.",
     description="Provides simple Python code solutions", 
     markdown=True)
@@ -14,7 +15,7 @@ coding_agent = Agent(
 debugger = Agent(
     name="Debugger", 
     role="Fixes errors",
-    model=Ollama(id="tinyllama"),
+    model=Ollama(id="llama3.2"),
     instructions="Fix problems in the given code and provide corrected version in one block.", 
     markdown=True)
 
@@ -23,14 +24,15 @@ reviewer = Agent(
     name="Reviewer", 
     role="Validates code",
     model=Ollama(id="tinyllama"),
-    instructions="Review code for correctness, efficiency, readability. Reply 'APPROVED' if good, else provide formatted code.", markdown=True)
+    instructions="Review code for correctness, efficiency, readability. Reply 'APPROVED' if good, else provide formatted code.",
+    markdown=True)
 
 #agent 4: Use Case Generator
 usecase_agent = Agent(
     name="UseCaseGenerator", 
     role="Generates use cases",
     model=Ollama(id="llama3.2"),
-    instructions="Generate practical use cases with description, input, and expected output,dont give code just give the usecases and information about it.", 
+    instructions="Generate practical use cases with description, input, and expected output,dont give code just give the usecases and information about it,and also give the examples of that usecases",
     markdown=True)
 
 #agent 5: Use Case Tester
@@ -45,7 +47,7 @@ usecase_tester = Agent(
 def main():
     st.title("🧑‍💻 Simple Multi-Agent Workflow")
 
-    task = st.text_input("Enter your coding task:", 
+    task = st.text_input("Enter your coding task:",
                         placeholder="write a python code to print first 10 fibonacci numbers")
 
     if st.button("Run Workflow"):
@@ -71,8 +73,9 @@ def main():
         st.subheader("UseCase Tester Output")
         st.write(testing.content)
 
+
         end = time.time()
         st.markdown(f"### ⏱ Total Execution Time: {end - start:.2f} seconds")
 
-if __name__ == "__main__":
-    main()
+
+main()
