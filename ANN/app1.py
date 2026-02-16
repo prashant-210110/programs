@@ -4,7 +4,8 @@ import pickle
 import pandas as pd
 
 # Load model
-model = tf.keras.models.load_model("model.h5")
+with open("model_ann.pkl", "rb") as f:
+    model= pickle.load(f)
 
 # Load encoders
 with open("labelencoder.pkl", "rb") as f:
@@ -51,8 +52,8 @@ input_data = pd.concat([input_data.reset_index(drop=True), geo_encoded_df], axis
 prediction = model.predict(input_data)
 prediction_proba = prediction[0][0]
 
-st.write(f'Churn Probability: {prediction_proba:.2f}')
 if st.button("Predict"):
+    st.write(f'Churn Probability: {prediction_proba:.2f}')
     if prediction_proba > 0.5:
         st.write('The customer is likely to churn.')
     else:
